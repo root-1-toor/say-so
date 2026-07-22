@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;900&family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body { background: #EDEBE6; color: #1C1B18; }
+
+@keyframes recpulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.35); opacity: 0.55; }
+}
+.rec-dot { animation: recpulse 1.1s ease-in-out infinite; }
+
+@keyframes caret {
+  0%, 45% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+.live-caret { animation: caret 0.9s steps(1) infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .rec-dot, .live-caret { animation: none; }
+}
