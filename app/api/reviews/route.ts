@@ -52,3 +52,15 @@ export async function POST(req: Request) {
   g.__reviews = g.__reviews!.slice(0, 30); // keep memory sane with audio payloads
   return NextResponse.json({ review }, { status: 201 });
 }
+
+export async function DELETE(req: Request) {
+  const required = process.env.CLEAR_KEY;
+  if (required) {
+    const provided = req.headers.get("x-clear-key");
+    if (provided !== required) {
+      return NextResponse.json({ error: "Wrong key." }, { status: 401 });
+    }
+  }
+  g.__reviews = [];
+  return NextResponse.json({ cleared: true });
+}
